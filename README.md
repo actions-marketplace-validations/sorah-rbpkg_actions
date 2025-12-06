@@ -15,19 +15,16 @@ You can specify the Ruby version in the input `ruby-version`.
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: sorah-rbpkg/actions@v1
+  - uses: actions/checkout@v4
+  - uses: sorah-rbpkg/actions@v2
     with:
       ruby-version: "3.2"
   - run: ruby app.rb
 ```
 
-Only the following versions are supported. Specify it as a string.
+Packages with Ruby 2.7 or later are supported. Specify it as a string.
 
-- `2.7`
-- `3.0`
-- `3.1`
-- `3.2`
+Note: Older Ruby versions are only available on older Ubuntu, and newer Ruby versions are only available on newer Ubuntu. The support matrix is roughly outlined in <https://github.com/sorah/config/blob/master/etc/debian-packages.txt>, but there're exceptions for some teeny versions.
 
 ### `.ruby-version` file support
 
@@ -36,8 +33,8 @@ Specifying `ruby-version-file` behaves the same as specifying `ruby-version` wit
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: sorah-rbpkg/actions@v1
+  - uses: actions/checkout@v4
+  - uses: sorah-rbpkg/actions@v2
     with:
       ruby-version-file: .ruby-version
   - run: ruby app.rb
@@ -47,8 +44,8 @@ If you want to specify `.ruby-version` in `ruby-version-file`, you can omit the 
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: sorah-rbpkg/actions@v1
+  - uses: actions/checkout@v4
+  - uses: sorah-rbpkg/actions@v2
   - run: ruby app.rb
 ```
 
@@ -59,8 +56,8 @@ To use this feature, you need to pre-generate Gemfile.lock and commit it to your
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: sorah-rbpkg/actions@v1
+  - uses: actions/checkout@v4
+  - uses: sorah-rbpkg/actions@v2
     with:
       bundler-cache: true
   - run: bundle exec ruby app.rb
@@ -72,8 +69,8 @@ You can explicitly specify the Ruby package version using the input `ruby-packag
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: sorah-rbpkg/actions@v1
+  - uses: actions/checkout@v4
+  - uses: sorah-rbpkg/actions@v2
     with:
       ruby-version: "3.1"
       ruby-package-version: 3.1.3-0nkmi1~jammy

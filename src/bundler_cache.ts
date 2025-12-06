@@ -60,7 +60,8 @@ export async function bundleInstall() {
   };
 
   const cacheHit = await cache.restoreCache(
-    cacheOptions.paths,
+    // https://github.com/actions/toolkit/issues/1377
+    cacheOptions.paths.slice(),
     cacheOptions.primaryKey,
     cacheOptions.restoreKeys
   );
@@ -78,5 +79,5 @@ async function buildBaseKey(
   bundleWith: string,
   bundleWithout: string
 ) {
-  return `sorah-rbpkg-actions-bundler-cache-v1-${await platform.text()}-cwd-${cwd}-bundler-${bundlerVersion}-with-${bundleWith}-without-${bundleWithout}`;
+  return `sorah-rbpkg-actions-bundler-cache-v2-${await platform.text()}-cwd-${cwd}-bundler-${bundlerVersion}-with-${bundleWith}-without-${bundleWithout}`;
 }
